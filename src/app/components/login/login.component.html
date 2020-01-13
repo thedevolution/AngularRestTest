@@ -1,0 +1,17 @@
+<form #loginForm="ngForm" (ngSubmit)="login()">
+    <div *ngIf="errorMsg" class="alert alert-danger">{{errorMsg}}</div>
+    <div class="input">
+        <label>Username</label>
+        <input type="text" name="username" placeholder="Enter a username" [(ngModel)]="credentials.username"
+            #username="ngModel" required />
+    </div>
+    <div class="input">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Enter a password" [(ngModel)]="credentials.password"
+            #password="ngModel" required />
+        <div *ngIf="loginForm.submitted && !password.valid" class="help-block">Password is required</div>
+    </div>
+    <div class="input">
+        <button type="submit" [disabled]="!loginForm.valid">Submit</button>
+    </div>
+</form>
